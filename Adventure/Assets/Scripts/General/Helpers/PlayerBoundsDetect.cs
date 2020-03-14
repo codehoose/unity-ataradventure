@@ -5,6 +5,8 @@ class PlayerBoundsDetect
     private readonly BoxCollider2D _collider;
     private readonly Transform _player;
 
+    public event PlayerLeftTheScreenEvent PlayerLeftTheScreen;
+
     public PlayerBoundsDetect(BoxCollider2D collider, Transform player)
     {
         _collider = collider;
@@ -24,6 +26,10 @@ class PlayerBoundsDetect
             var direction = Mathf.Sign(horizontal.z);
             var offset = _collider.bounds.extents.x * 2f * direction;
             _player.position += new Vector3(offset, 0);
+
+            var compass = direction > 0 ? Direction.West : Direction.East;
+            PlayerLeftTheScreen?.Invoke(this, new PlayerLeftTheScreenEventArgs(compass));
+
             return;
         }
 
@@ -33,6 +39,9 @@ class PlayerBoundsDetect
             var direction = -Mathf.Sign(vertical.z);
             var offset = _collider.bounds.extents.y * 2f * direction;
             _player.position += new Vector3(0, offset);
+
+            var compass = direction > 0 ? Direction.South : Direction.North;
+            PlayerLeftTheScreen?.Invoke(this, new PlayerLeftTheScreenEventArgs(compass));
         }
     }
 }
