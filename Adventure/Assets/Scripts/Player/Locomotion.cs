@@ -5,6 +5,24 @@ public class Locomotion : MonoBehaviour
     [Header("Locomotion Variables")]
     public float _speed = 20;
 
+    public event GateOpenedEventHandler GateOpened;
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // Check to see who entered, if it's the player
+        if (collision.tag != "Gate") return;
+        // check that they have the right key and that
+        var inventory = GetComponent<Inventory>();
+        var gate = collision.GetComponent<GateActivator>();
+        if (inventory == null || inventory.CurrentItem == null) return;
+
+        if (inventory.CurrentItem.keyName == gate.key)
+        {
+            GateOpened?.Invoke(this, new GateOpenedEventArgs());
+            gate.OpenGate();
+        }
+    }
+
     void Update()
     {
         var x = Input.GetAxis("Horizontal") * _speed * Time.deltaTime;

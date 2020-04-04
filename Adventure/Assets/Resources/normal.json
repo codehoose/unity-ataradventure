@@ -6,7 +6,24 @@
       "n": 1,
       "s": 3,
       "shape": 0,
-      "w": -1
+      "w": -1,
+      "objects": [
+      	{
+      		"name": "yellow-key",
+      		"position": {
+      			"x": -11,
+      			"y": 3.6
+      		}
+      	}
+      ],
+ 		"gate": {
+ 			"key": "yellow-key",
+ 			"position":
+ 			{	
+ 				"x": 0.4,
+ 				"y": -3.35 
+ 			}
+ 		}
     },
         {
       "colour": 0,

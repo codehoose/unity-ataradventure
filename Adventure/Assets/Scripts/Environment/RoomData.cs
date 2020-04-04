@@ -9,12 +9,17 @@ class RoomData
 
     public LayerData GetVisual()
     {
-        return layers.First((d) => d.name == "visual");
+        return layers.FirstOrDefault((d) => d.name == "visual");
     }
 
     public LayerData GetCollision()
     {
-        return layers.First((d) => d.name == "collision");
+        return layers.FirstOrDefault((d) => d.name == "collision");
+    }
+
+    public LayerData GetKeyRequired()
+    {
+        return layers.FirstOrDefault((d) => d.name == "key-required");
     }
 }
 

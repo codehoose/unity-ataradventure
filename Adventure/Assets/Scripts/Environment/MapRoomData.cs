@@ -9,4 +9,6 @@ public class MapRoomData
     public int s;
     public int shape;
     public int w;
+    public ItemData[] objects;
+    public GateData gate;
 }

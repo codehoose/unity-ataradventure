@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class GameController : MonoBehaviour
@@ -15,11 +15,34 @@ public class GameController : MonoBehaviour
 
     public TextAsset[] _rooms;
 
+
+    public GameObject _gate;
+
+    public Pickup[] _objects;
+    private Dictionary<string, Pickup> _objectMap = new Dictionary<string, Pickup>();
+
     private void Awake()
     {
         _collider = GetComponent<BoxCollider2D>();
         _playerBoundsDetect = new PlayerBoundsDetect(_collider, _player);
         _playerBoundsDetect.PlayerLeftTheScreen += HandlePlayerLeavesPlayfield;
+
+        foreach (var pickup in _objects)
+        {
+            _objectMap[pickup.keyName] = pickup;
+        }
+
+        _player.GetComponent<Inventory>().ItemDropped += (o, e) =>
+          {
+              e.Pickup.currentRoom = _roomIndex;
+              e.Pickup.position = e.Pickup.transform.position;
+          };
+
+        _player.GetComponent<Locomotion>().GateOpened += (o, e) =>
+          {
+              _currentLevel.rooms[_roomIndex].gate.opened = true;
+              _renderer.KeyUsed();
+          };
     }
 
     private void HandlePlayerLeavesPlayfield(object sender, PlayerLeftTheScreenEventArgs e)
@@ -46,7 +69,29 @@ public class GameController : MonoBehaviour
     private void Start()
     {
         _currentLevel = LevelLoader.LoadLevel(_difficulty[0]);
+        PlaceObjects();
         ChangeRoom(_roomIndex);
+    }
+
+    private void PlaceObjects()
+    {
+        // Go through all the objects in the current level
+        var roomId = 0;
+        foreach (var room in _currentLevel.rooms)
+        {
+            if (room.objects == null || room.objects.Length == 0)
+            {
+                continue;
+            }
+
+            foreach (var o in room.objects)
+            {
+                // Place them in the correct rooms
+                _objectMap[o.name].position = new Vector2(o.position.x, o.position.y);
+                _objectMap[o.name].currentRoom = roomId;
+            }
+            roomId++;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -60,7 +105,37 @@ public class GameController : MonoBehaviour
         var firstRoom = _rooms[_currentLevel.rooms[_roomIndex].shape];
         var colour = _currentLevel.rooms[_roomIndex].colour;
 
-        _renderer.RenderRoom(firstRoom, colour);
+        ChangePlayerColour(colour);
 
+        _renderer.RenderRoom(firstRoom, _currentLevel.rooms[_roomIndex].gate.opened, colour);
+
+        var gate = _currentLevel.rooms[_roomIndex].gate;
+        if (string.IsNullOrEmpty(gate.key) || gate.opened)
+        {
+            _gate.transform.position = new Vector2(-50, 0);
+            _gate.GetComponent<GateActivator>().key = "";
+        }
+        else
+        {
+            _gate.GetComponent<GateActivator>().Reset(gate.position, gate.key);
+        }
+
+        foreach (var obj in _objects)
+        {
+            if (obj.currentRoom == roomIndex)
+            {
+                obj.transform.position = obj.position;
+            }
+            else if (obj.currentRoom >= 0)
+            {
+                obj.transform.position = new Vector3(-50, 0);
+            }
+        }
+    }
+
+    private void ChangePlayerColour(int colourIndex)
+    {
+        var colour = GetComponent<RoomRenderer>()._roomColours[colourIndex];
+        var sprite = _player.GetComponent<SpriteRenderer>().color = colour;
     }
 }
