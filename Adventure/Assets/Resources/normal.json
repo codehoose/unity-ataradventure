@@ -31,7 +31,16 @@
       "n": -1,
       "s": 0,
       "shape": 1,
-      "w": -1
+      "w": -1,
+      "objects": [
+      	{
+      		"name": "sword",
+      		"position": {
+      			"x": -13,
+      			"y": -6.6
+      		}
+      	}
+      ]
     },
         {
       "colour": 2,
