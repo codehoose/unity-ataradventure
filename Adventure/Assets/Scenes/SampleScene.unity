@@ -487,6 +487,8 @@ MonoBehaviour:
   - {fileID: 4900000, guid: 7b4bdefdcc0447b42b411ea6e979414e, type: 3}
   - {fileID: 4900000, guid: 90324d3726f649e499427aac7feba511, type: 3}
   - {fileID: 4900000, guid: a2cc76bbb518ad84b980c89642f37ccd, type: 3}
+  - {fileID: 4900000, guid: c1effd4e9b5f56b4c903d1fd0290fc16, type: 3}
+  - {fileID: 4900000, guid: d4e7cffa07913044c895440d60e875a2, type: 3}
   _gate: {fileID: 933575275}
   _objects:
   - {fileID: 8459171704387997389}
