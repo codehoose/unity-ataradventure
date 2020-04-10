@@ -86,6 +86,7 @@ public class GameController : MonoBehaviour
         {
             if (room.objects == null || room.objects.Length == 0)
             {
+                roomId++;
                 continue;
             }
 

@@ -50,7 +50,16 @@
       "n": 5,
       "s": -1,
       "shape": 6,
-      "w": -1
+      "w": -1,
+      "objects": [
+        {
+          "name": "barrier-2",
+          "position": {
+            "x": -17,
+            "y": 0
+          }
+        }
+      ]
     },
     {
       "colour": 7,
@@ -66,9 +75,18 @@
       "e": -1,
       "id": 4,
       "n": -1,
-      "s": -1,
+      "s": 12,
       "shape": 2,
-      "w": 3
+      "w": 3,
+      "objects": [
+        {
+          "name": "barrier-4",
+          "position": {
+            "x": 17,
+            "y": 0
+          }
+        }
+      ]
     },
     {
       "colour": 4,
@@ -129,6 +147,42 @@
       "n": 11,
       "s": 7,
       "shape": 0,
+      "w": -1
+    },
+    {
+      "colour": 4,
+      "e": -1,
+      "id": 11,
+      "n": -1,
+      "objects": [
+        {
+          "name": "chalice",
+          "position": {
+            "x": -13,
+            "y": -6.6
+          }
+        }
+      ],
+      "s": 10,
+      "shape": 1,
+      "w": -1
+    },
+    {
+      "colour": 3,
+      "e": -1,
+      "objects": [
+        {
+          "name": "black-key",
+          "position": {
+            "x": -13,
+            "y": -6.6
+          }
+        }
+      ],
+      "id": 12,
+      "n": 4,
+      "s": -1,
+      "shape": 4,
       "w": -1
     }
   ]
