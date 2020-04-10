@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameController : MonoBehaviour
@@ -20,6 +21,10 @@ public class GameController : MonoBehaviour
 
     public Pickup[] _objects;
     private Dictionary<string, Pickup> _objectMap = new Dictionary<string, Pickup>();
+
+    public event EventHandler RoomChanged;
+
+    public int RoomIndex => _roomIndex;
 
     private void Awake()
     {
@@ -131,6 +136,8 @@ public class GameController : MonoBehaviour
                 obj.transform.position = new Vector3(-50, 0);
             }
         }
+
+        RoomChanged?.Invoke(this, EventArgs.Empty);
     }
 
     private void ChangePlayerColour(int colourIndex)

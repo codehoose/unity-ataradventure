@@ -3,85 +3,133 @@
     {
       "colour": 0,
       "e": -1,
+      "gate": {
+        "key": "yellow-key",
+        "position": {
+          "x": 0.4,
+          "y": -3.35
+        }
+      },
+      "id": 0,
       "n": 1,
+      "objects": [
+        {
+          "name": "yellow-key",
+          "position": {
+            "x": -11,
+            "y": 3.6
+          }
+        }
+      ],
       "s": 3,
       "shape": 0,
-      "w": -1,
-      "objects": [
-      	{
-      		"name": "yellow-key",
-      		"position": {
-      			"x": -11,
-      			"y": 3.6
-      		}
-      	}
-      ],
- 		"gate": {
- 			"key": "yellow-key",
- 			"position":
- 			{	
- 				"x": 0.4,
- 				"y": -3.35 
- 			}
- 		}
+      "w": -1
     },
-        {
+    {
       "colour": 0,
       "e": -1,
+      "id": 1,
       "n": -1,
+      "objects": [
+        {
+          "name": "sword",
+          "position": {
+            "x": -13,
+            "y": -6.6
+          }
+        }
+      ],
       "s": 0,
       "shape": 1,
-      "w": -1,
-      "objects": [
-      	{
-      		"name": "sword",
-      		"position": {
-      			"x": -13,
-      			"y": -6.6
-      		}
-      	}
-      ]
+      "w": -1
     },
-        {
+    {
       "colour": 2,
       "e": 3,
+      "id": 2,
       "n": 5,
       "s": -1,
       "shape": 6,
       "w": -1
     },
-        {
+    {
       "colour": 7,
       "e": 4,
+      "id": 3,
       "n": 0,
       "s": -1,
       "shape": 6,
       "w": 2
     },
-        {
+    {
       "colour": 0,
       "e": -1,
+      "id": 4,
       "n": -1,
       "s": -1,
       "shape": 2,
       "w": 3
     },
     {
-    	"colour": 4,
-    	"e": 6,
-    	"w": 6,
-    	"s": 2,
-    	"n": -1,
-    	"shape": 7
+      "colour": 4,
+      "e": 6,
+      "id": 5,
+      "n": 9,
+      "s": 2,
+      "shape": 7,
+      "w": 6
     },
     {
-    	"colour": 4,
-    	"e": 5,
-    	"w": 5,
-    	"s": -1,
-    	"n": -1,
-    	"shape": 8
+      "colour": 4,
+      "e": 5,
+      "id": 6,
+      "n": 7,
+      "s": 8,
+      "shape": 8,
+      "w": 5
+    },
+    {
+      "colour": 4,
+      "e": 9,
+      "id": 7,
+      "n": 10,
+      "s": 6,
+      "shape": 9,
+      "w": 8
+    },
+    {
+      "colour": 4,
+      "e": 7,
+      "id": 8,
+      "n": 6,
+      "s": -1,
+      "shape": 10,
+      "w": 9
+    },
+    {
+      "colour": 4,
+      "e": 8,
+      "id": 9,
+      "n": -1,
+      "s": 5,
+      "shape": 11,
+      "w": 7
+    },
+    {
+      "colour": 4,
+      "e": -1,
+      "gate": {
+        "key": "black-key",
+        "position": {
+          "x": 0.4,
+          "y": -3.35
+        }
+      },
+      "id": 10,
+      "n": 11,
+      "s": 7,
+      "shape": 0,
+      "w": -1
     }
-
   ]
 }
