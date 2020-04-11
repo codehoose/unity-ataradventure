@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Pickup
   - Gate
+  - DragonBody
+  - DragonMouth
   layers:
   - Default
   - TransparentFX

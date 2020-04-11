@@ -969,6 +969,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pickup: {fileID: 8300000, guid: cf870c9b29eb64544a450fde8d22c3fc, type: 3}
   _drop: {fileID: 8300000, guid: ef205cfddc508e940ac6d9a86c0ccc96, type: 3}
+  _dragonDead: {fileID: 8300000, guid: 9676ef06c7084364ca5b29769bd4082d, type: 3}
+  _playerDead: {fileID: 8300000, guid: bc55e787247ab2046a8226f33ef2379e, type: 3}
+  _dragonBite: {fileID: 8300000, guid: a248ec58fc8b7b74fbae86e22e5a1627, type: 3}
+  _swordHit: {fileID: 8300000, guid: 19b9e57c8647794478d27510d3e87e21, type: 3}
   _source: {fileID: 875758150}
 --- !u!114 &875758152
 MonoBehaviour:
@@ -1267,6 +1271,7 @@ GameObject:
   - component: {fileID: 1482498947}
   - component: {fileID: 1482498946}
   - component: {fileID: 1482498950}
+  - component: {fileID: 1482498951}
   m_Layer: 5
   m_Name: Success
   m_TagString: Untagged
@@ -1370,6 +1375,20 @@ MonoBehaviour:
   _locomotion: {fileID: 576709087}
   _requiredObject: chalice
   _group: {fileID: 52942594}
+--- !u!114 &1482498951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482498945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9575665dcdb3224890ef9d94b6dec62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _waitTime: 5
+  _targetScene: MainMenu
 --- !u!114 &1499744101 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1886482376015193855, guid: 02d97ffe63aeb8f4f9bbe5a3c53954f1,
@@ -1643,6 +1662,7 @@ GameObject:
   - component: {fileID: 1785590992}
   - component: {fileID: 1785590991}
   - component: {fileID: 1785590990}
+  - component: {fileID: 1785590995}
   m_Layer: 5
   m_Name: Failure
   m_TagString: Untagged
@@ -1745,6 +1765,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0.73, y: -0.054}
   m_SizeDelta: {x: 25.428, y: 14.669}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1785590995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1785590989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9575665dcdb3224890ef9d94b6dec62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _waitTime: 5
+  _targetScene: MainMenu
 --- !u!1 &1925548505
 GameObject:
   m_ObjectHideFlags: 0

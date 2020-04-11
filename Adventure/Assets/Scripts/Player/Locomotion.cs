@@ -1,14 +1,27 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class Locomotion : MonoBehaviour
 {
     [Header("Locomotion Variables")]
     public float _speed = 20;
 
+    private bool _gameOver = false;
+
+    public int Health { get; internal set; } = 100;
+
     public event GateOpenedEventHandler GateOpened;
+
+    public event EventHandler DragonBite;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.tag == "DragonMouth")
+        {
+            DragonBite?.Invoke(this, EventArgs.Empty);
+            return;
+        }
+
         // Check to see who entered, if it's the player
         if (collision.tag != "Gate") return;
         // check that they have the right key and that
@@ -23,8 +36,24 @@ public class Locomotion : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.tag == "DragonMouth")
+        {
+            Health--;
+            if (Health < 0) Health = 0;
+        }
+    }
+
+    public void GameOver()
+    {
+        _gameOver = true;
+    }
+
     void Update()
     {
+        if (_gameOver) return;
+
         var x = Input.GetAxis("Horizontal") * _speed * Time.deltaTime;
         var y = Input.GetAxis("Vertical") * _speed * Time.deltaTime;
         var offset = new Vector2();

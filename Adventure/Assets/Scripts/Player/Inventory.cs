@@ -6,6 +6,8 @@ public class Inventory : MonoBehaviour
 
     public event ItemDroppedEventHandler ItemDropped;
 
+    public event ItemDroppedEventHandler ItemPickedUp;
+
     public Pickup CurrentItem { get { return _currentItem; } }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -40,6 +42,7 @@ public class Inventory : MonoBehaviour
         _currentItem = pickup;
         _currentItem.gameObject.transform.SetParent(transform);
         _currentItem.currentRoom = -1;
+        ItemPickedUp?.Invoke(this, new ItemDroppedEventArgs(_currentItem));
     }
 
     void Update()

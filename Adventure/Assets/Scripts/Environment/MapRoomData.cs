@@ -11,4 +11,5 @@ public class MapRoomData
     public int w;
     public ItemData[] objects;
     public GateData gate;
+    public DragonData[] dragons;
 }
